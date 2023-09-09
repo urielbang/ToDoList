@@ -35,14 +35,14 @@ document.body.innerHTML += `
 <div id="myDiv"></div>
   `;
 document.getElementById("myDiv").innerHTML = `
-  <table id="myTable" >
-  <thead>
+  <table style="border-collapse: collapse; border: solid;" id="myTable" >
+  <thead style=" border: solid;">
     <th>title task</th>
     <th>detils task</th>
     <th>date finish</th>
     <th>is the task done</th>
   </thead>
-  <tbody id="myTbody">
+  <tbody style=" border: solid;" id="myTbody">
     
   </tbody>
 </table>`;
@@ -52,16 +52,24 @@ document.getElementById("myDiv").innerHTML = `
 //   document.body.innerHTML += `<img src="fotos/giphy.gif" alt="">`;
 // }
 
-function addDateToBale() {
-  value1 = document.getElementById("titleTask").value;
-  document.getElementById("myTbody").innerHTML += `<tr><td>${value1}</td><td>${
-    document.getElementById("detailsTask").value
-  }</td><td>
-  ${document.getElementById("datefinish").value}</td><td>${
-    document.getElementById("isTaskDone").value
-  }</td></tr>`;
+document.getElementById("myform").addEventListener("submit", function (event) {
+  event.preventDefault();
+  var titleTask = document.getElementById("titleTask").value;
+  var detailsTask = document.getElementById("detailsTask").value;
+  var dateFinish = document.getElementById("datefinish").value;
+  var isTaskDone = document.getElementById("isTaskDone").value;
 
-  console.log(value1);
-}
-document.getElementById("myform").addEventListener("submit", addDateToBale);
-console.log(value1);
+  document.getElementById("myTbody").innerHTML += `
+  <tr> 
+  <td>${titleTask}</td>
+  <td>${detailsTask}</td>
+  <td>${dateFinish}</td>
+  <td>${isTaskDone}</td>
+  </tr>
+  
+  `;
+  document.getElementById("titleTask").value = "";
+  document.getElementById("detailsTask").value = "";
+  document.getElementById("datefinish").value = "";
+  document.getElementById("isTaskDone").value = "";
+});
