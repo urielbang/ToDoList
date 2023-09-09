@@ -3,17 +3,17 @@ var birthDate;
 var date;
 var yearUser;
 
-// function promptUSer() {
-//   firstNAme = prompt("type your first name !");
-//   birthDate = prompt("type your date !");
-//   date = new Date().getFullYear();
-//   yearUser = new Date(birthDate).getFullYear();
-// }
-// promptUSer();
+function promptUSer() {
+  firstNAme = prompt("type your first name !");
+  birthDate = prompt("type your date !");
+  date = new Date().getFullYear();
+  yearUser = new Date(birthDate).getFullYear();
+}
+promptUSer();
 
-// if (date - yearUser > 18) {
-document.body.innerHTML += `<h1 style="color: darkred; text-align:center;">welcome ${firstNAme} to do list App !</h1>`;
-document.body.innerHTML += `
+if (date - yearUser > 18) {
+  document.body.innerHTML += `<h1 style="color: darkred; text-align:center;">welcome ${firstNAme} to do list App !</h1>`;
+  document.body.innerHTML += `
   <form
       
       style="display: flex; flex-direction: column"
@@ -34,23 +34,23 @@ document.body.innerHTML += `
 </form>
 <div id="myDiv"></div>
   `;
-document.getElementById("myDiv").innerHTML = `
+  document.getElementById("myDiv").innerHTML = `
   <table style="border-collapse: collapse; border: solid;" id="myTable" >
   <thead style=" border: solid;">
     <th>title task</th>
     <th>detils task</th>
     <th>date finish</th>
     <th>is the task done</th>
+    <th> crorrect date</th>
   </thead>
   <tbody style=" border: solid;" id="myTbody">
     
   </tbody>
 </table>`;
-
-// } else {
-//   document.body.innerHTML += `<h2 style="color: darkred;">sorry you are not 18 years old yet !</h2>`;
-//   document.body.innerHTML += `<img src="fotos/giphy.gif" alt="">`;
-// }
+} else {
+  document.body.innerHTML += `<h2 style="color: darkred;">sorry you are not 18 years old yet !</h2>`;
+  document.body.innerHTML += `<img src="fotos/giphy.gif" alt="">`;
+}
 
 document.getElementById("myform").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -58,6 +58,7 @@ document.getElementById("myform").addEventListener("submit", function (event) {
   var detailsTask = document.getElementById("detailsTask").value;
   var dateFinish = document.getElementById("datefinish").value;
   var isTaskDone = document.getElementById("isTaskDone").value;
+  var dateCorrect = new Date();
 
   document.getElementById("myTbody").innerHTML += `
   <tr> 
@@ -65,6 +66,7 @@ document.getElementById("myform").addEventListener("submit", function (event) {
   <td>${detailsTask}</td>
   <td>${dateFinish}</td>
   <td>${isTaskDone}</td>
+  <td>${dateCorrect.toLocaleString()}</td>
   </tr>
   
   `;
